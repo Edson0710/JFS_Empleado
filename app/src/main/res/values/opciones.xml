@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="EstadoCivil_opciones">
+        <item>Estado Civil</item>
+        <item>Soltero</item>
+        <item>Casada</item>
+        <item>Union_libre</item>
+    </string-array>
+
+
+    <string-array name="Discapacidades_opciones">
+        <item>Seleccione una discapacidad</item>
+        <item>Motriz</item>
+        <item>Visual</item>
+        <item>Auditiva</item>
+        <item>Verbal</item>
+        <item>Mental Intelectual</item>
+        <item>Mental Psicosocial</item>
+        <item>Ninguna</item>
+    </string-array>
+
+
+    <string-array name="SegundoIdioma_opciones">
+        <item>Segundo idioma que domine</item>
+        <item>Ninguno</item>
+        <item>Ingles</item>
+        <item>Frances</item>
+        <item>Aleman</item>
+        <item>Portugues</item>
+        <item>Chino</item>
+        <item>Japones</item>
+    </string-array>
+
+
+    <string-array name="TercerIdioma_opciones">
+        <item>Tercer idioma que domine</item>
+        <item>Ninguno</item>
+        <item>Ingles</item>
+        <item>Frances</item>
+        <item>Aleman</item>
+        <item>Portugues</item>
+        <item>Chino</item>
+        <item>Japones</item>
+    </string-array>
+
+
+    <string-array name="NivelEstudios_opciones">
+        <item>Nivel de estudios maximos</item>
+        <item>Educacion Primaria</item>
+        <item>Educacion Secundaria</item>
+        <item>Bachillerato General</item>
+        <item>Bachillerato Tecnologico</item>
+        <item>Bachillerato Tecnico</item>
+        <item>Licenciatura</item>
+        <item>Maestria</item>
+        <item>Doctorado</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+    
+</resources>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="Registro">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:text="Registro de Usuario"
+                android:textColor="#000"
+                android:textSize="23sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="9dp"
+                android:text="Datos Generales"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/Registro_Nombre"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Nombre Completo"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/Registro_Correo"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Correo electronico"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/Registro_Contraseña"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/Registro_ContraseñaConfirmar"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Confirmar contraseña"
+                android:inputType="textPassword" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Datos Personales"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:id="@+id/Registro_Edad"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Edad:"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/Registro_Estatura"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Estatura (cm)"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/Registro_Peso"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Peso"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/Registro_Telefono"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Numero telefonico"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/Registro_Domicilio"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Domicilio"
+                android:inputType="text" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Datos Informativos"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/Registro_CURP"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="CURP"
+                android:inputType="textCapCharacters" />
+
+            <EditText
+                android:id="@+id/Registro_Nacionalidad"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Nacionalidad"
+                android:inputType="text" />
+
+            <Spinner
+                android:id="@+id/Spinner_EstadoCivil"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:hint="Estado civil" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Perfil Empleado"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/Registro_Profesion"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Profesion obtenida"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/Registro_Ingreso"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Ingreso deseado (Mensual)"
+                android:inputType="number" />
+
+            <Spinner
+                android:id="@+id/Spinner_estudios"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:hint="Nivel maximo de estudios" />
+
+            <Spinner
+                android:id="@+id/Spinner_SegundoIdioma"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:hint="Segundo idioma que domine" />
+
+            <Spinner
+                android:id="@+id/Spinner_TercerIdioma"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:hint="Tercer idioma que domine" />
+
+            <Spinner
+                android:id="@+id/Spinner_Discapacidades"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:hint="Discapacidad" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Archivos"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/Registro_Fotografia"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Fotografia.JPG" />
+
+            <EditText
+                android:id="@+id/Registro_Curriculum"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Curriculum.JPG"
+                android:inputType="text" />
+
+
+            <Button
+                android:id="@+id/boton_registrarse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:drawableRight="@drawable/ic_listo"
+                android:text="REGISTRARSE  "
+                android:textColor="#000" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
