@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         tv_registrar= (TextView) findViewById(R.id.tv_Registrar);
         correoET = (EditText) findViewById(R.id.Usuario);
+        passET = (EditText) findViewById(R.id.Contraseña);
 
         tv_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
