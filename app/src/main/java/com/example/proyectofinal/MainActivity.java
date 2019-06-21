@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         tv_registrar= (TextView) findViewById(R.id.tv_Registrar);
         correoET = (EditText) findViewById(R.id.Usuario);
         passET = (EditText) findViewById(R.id.Contraseña);
-        //Benites se la come
 
         tv_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   /* public void login() {
+    public void login() {
             String url = "http://jfsproyecto.online/loginEmpleado.php?correo=" + correo +
                 "&pass=" + pass;
-        final Intent intent = new Intent(Login.this, Vista_principal.class);
+        final Intent intent = new Intent(MainActivity.this, MenuOpciones.class);
         JsonObjectRequest peticion = new JsonObjectRequest
                 (
                         Request.Method.GET,
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                             startActivity(intent);
                                             break;
                                         case "FALLIDO":
-                                            Toast.makeText(Login.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(MainActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
                                             break;
                                     }
 
@@ -88,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
                         , new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Login.this, "Error conexión", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error conexión", Toast.LENGTH_SHORT).show();
                     }
                 });
-        RequestQueue x = Volley.newRequestQueue(Login.this);
+        RequestQueue x = Volley.newRequestQueue(MainActivity.this);
         x.add(peticion);
-    }*/
+    }
 }
