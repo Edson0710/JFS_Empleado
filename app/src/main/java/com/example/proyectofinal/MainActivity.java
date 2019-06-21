@@ -47,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
         boton_iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MenuOpciones.class);
-                startActivity(intent);
+                correo = correoET.getText().toString();
+                pass = passET.getText().toString();
+                login();
             }
         });
 
