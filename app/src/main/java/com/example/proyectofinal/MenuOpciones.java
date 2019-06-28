@@ -2,8 +2,10 @@ package com.example.proyectofinal;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -16,10 +18,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MenuOpciones extends AppCompatActivity  /////////
         implements NavigationView.OnNavigationItemSelectedListener, InfoFragment.OnFragmentInteractionListener, VistaPrincipalFragment.OnFragmentInteractionListener{
 
+    String id_empleado, nombre, correo;
+    TextView nombreTextView, correoTextView;
 
     @Override
 
@@ -28,6 +33,10 @@ public class MenuOpciones extends AppCompatActivity  /////////
         setContentView(R.layout.activity_menu_opciones);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        id_empleado = obtenerId();
+        nombre = obtenerNombre();
+        correo = obtenerCorreo();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +59,11 @@ public class MenuOpciones extends AppCompatActivity  /////////
         ///////////////////////////////
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+        nombreTextView = view.findViewById(R.id.nombre);
+        correoTextView = view.findViewById(R.id.correo);
+        nombreTextView.setText(nombre);
+        correoTextView.setText(correo);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -138,6 +152,25 @@ public class MenuOpciones extends AppCompatActivity  /////////
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
+
+    public String obtenerId() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MenuOpciones.this);
+        String id_preference = preferences.getString("ID", "1");
+        return id_preference;
+    }
+
+    public String obtenerNombre() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MenuOpciones.this);
+        String id_preference = preferences.getString("NOMBRE", "1");
+        return id_preference;
+    }
+
+    public String obtenerCorreo() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MenuOpciones.this);
+        String id_preference = preferences.getString("CORREO", "1");
+        return id_preference;
+    }
+
+
 }

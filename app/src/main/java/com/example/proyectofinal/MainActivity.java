@@ -1,6 +1,8 @@
 package com.example.proyectofinal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 correo = correoET.getText().toString();
                 pass = passET.getText().toString();
-                login();
+                if (correo.equals("") || pass.equals("")){
+                    Toast.makeText(MainActivity.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    login();
+                }
             }
         });
 
@@ -72,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
                                     switch (valor) {
                                         case "EXITOSO":
+                                            String id = response.getString("id");
+                                            String nombre = response.getString("nombre");
+                                            String correo = response.getString("correo");
+                                            guardarId(id);
+                                            guardarNombre(nombre);
+                                            guardarCorreo(correo);
                                             startActivity(intent);
                                             break;
                                         case "FALLIDO":
@@ -93,5 +105,30 @@ public class MainActivity extends AppCompatActivity {
                 });
         RequestQueue x = Volley.newRequestQueue(MainActivity.this);
         x.add(peticion);
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
+
+    public void guardarId(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("ID", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarNombre(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("NOMBRE", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarCorreo(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("CORREO", my_id);
+        myEditor.commit();
     }
 }
