@@ -95,20 +95,12 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/Registro_Peso"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="Peso"
-                android:inputType="number" />
-
-            <EditText
                 android:id="@+id/Registro_Telefono"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:hint="Numero telefonico"
-                android:inputType="phone" />
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/Registro_Domicilio"
@@ -133,16 +125,15 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="CURP"
-                android:inputType="textCapCharacters" />
+                android:hint="CURP" />
 
-            <EditText
-                android:id="@+id/Registro_Nacionalidad"
+            <Spinner
+                android:id="@+id/Spinner_Nacionalidad"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="Nacionalidad"
-                android:inputType="text" />
+                android:layout_marginTop="3dp"
+                android:hint="Nacionalidad" />
 
             <Spinner
                 android:id="@+id/Spinner_EstadoCivil"
@@ -212,6 +203,7 @@
 
 
             <TextView
+                android:id="@+id/TextView_Archivos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -220,20 +212,14 @@
                 android:textColor="#000"
                 android:textSize="20dp" />
 
-            <EditText
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/Registro_Fotografia"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:hint="Fotografia.JPG" />
+                android:layout_marginTop="15dp"
+                android:background="#e0e0e0" />
 
-            <EditText
-                android:id="@+id/Registro_Curriculum"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="Curriculum.JPG"
-                android:inputType="text" />
 
 
             <Button
@@ -241,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
                 android:drawableRight="@drawable/ic_listo"
                 android:text="REGISTRARSE  "
                 android:textColor="#000" />

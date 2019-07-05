@@ -18,13 +18,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MenuOpciones extends AppCompatActivity  /////////
         implements NavigationView.OnNavigationItemSelectedListener, InfoFragment.OnFragmentInteractionListener, VistaPrincipalFragment.OnFragmentInteractionListener{
 
-    String id_empleado, nombre, correo;
+    String id_empleado, nombre, correo, imagen;
     TextView nombreTextView, correoTextView;
+    CircleImageView imageView;
 
     @Override
 
@@ -37,15 +43,8 @@ public class MenuOpciones extends AppCompatActivity  /////////
         id_empleado = obtenerId();
         nombre = obtenerNombre();
         correo = obtenerCorreo();
+        imagen = obtenerUrl();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,8 +61,10 @@ public class MenuOpciones extends AppCompatActivity  /////////
         View view = navigationView.getHeaderView(0);
         nombreTextView = view.findViewById(R.id.nombre);
         correoTextView = view.findViewById(R.id.correo);
+        imageView = view.findViewById(R.id.imageView_User);
         nombreTextView.setText(nombre);
         correoTextView.setText(correo);
+        Glide.with(getApplicationContext()).load(imagen).into(imageView);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -169,6 +170,12 @@ public class MenuOpciones extends AppCompatActivity  /////////
     public String obtenerCorreo() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MenuOpciones.this);
         String id_preference = preferences.getString("CORREO", "1");
+        return id_preference;
+    }
+
+    public String obtenerUrl() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MenuOpciones.this);
+        String id_preference = preferences.getString("IMAGEN", "1");
         return id_preference;
     }
 

@@ -81,9 +81,11 @@ public class MainActivity extends AppCompatActivity {
                                             String id = response.getString("id");
                                             String nombre = response.getString("nombre");
                                             String correo = response.getString("correo");
+                                            String imagen = response.getString("imagen");
                                             guardarId(id);
                                             guardarNombre(nombre);
                                             guardarCorreo(correo);
+                                            guardarUrl(imagen);
                                             startActivity(intent);
                                             break;
                                         case "FALLIDO":
@@ -129,6 +131,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         SharedPreferences.Editor myEditor = preferences.edit();
         myEditor.putString("CORREO", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarUrl(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("IMAGEN", my_id);
         myEditor.commit();
     }
 }
