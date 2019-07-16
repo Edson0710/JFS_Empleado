@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,33 +7,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".VistaPrincipalFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
-        android:id="@+id/textView_Bienvenido"
+        android:id="@+id/bienvenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido: "
+        android:text="Bienvenido"
+        android:textColor="#000"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
 
     <TextView
-        android:id="@+id/Nombre"
+        android:id="@+id/nombre"
+        android:layout_below="@+id/bienvenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="*"
+        android:text="Nombre"
+        android:textColor="#000"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textView_Bienvenido"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView_Bienvenido"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
 
 
     <Button
@@ -41,23 +36,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Curriculum"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/nombre"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"
+        android:padding="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="121dp"
-        android:layout_height="104dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagen"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/nombre"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        />
 
     <Button
         android:id="@+id/Button_OfertasEmpleos"
@@ -65,12 +59,23 @@
         android:layout_height="85dp"
         android:text="Ofertas de Empleos"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        android:background="@drawable/boton1"
+        android:textColor="#fff"
+        android:layout_above="@+id/Button_MisOfertas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"/>
+
+    <Button
+        android:id="@+id/Button_MisOfertas"
+        android:layout_width="200dp"
+        android:layout_height="85dp"
+        android:text="Mis ofertas"
+        android:textSize="25dp"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"
+        android:layout_above="@+id/Button_TrabajosFinalizados"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"/>
 
     <Button
         android:id="@+id/Button_TrabajosFinalizados"
@@ -78,16 +83,15 @@
         android:layout_height="85dp"
         android:text="Trabajos finalizados"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"/>
 
 
 
 
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

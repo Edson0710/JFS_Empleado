@@ -1,5 +1,6 @@
 package com.example.proyectofinal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,15 +29,25 @@ public class MainActivity extends AppCompatActivity {
     EditText correoET, passET;
     String correo, pass;
     Button boton_iniciar;
+    RadioButton sesion;
+    private boolean isActivate;
+    private static final String STRING_PREFERENCES = "preferencias";
+    private static final String PREFERENCE_ESTADO_BUTTON = "estado.button";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (obtenerEstado()) {
+            Intent intent = new Intent(MainActivity.this, MenuOpciones.class);
+            startActivity(intent);
+        }
+
         tv_registrar= (TextView) findViewById(R.id.tv_Registrar);
         correoET = (EditText) findViewById(R.id.Usuario);
         passET = (EditText) findViewById(R.id.Contraseña);
+        sesion = (RadioButton) findViewById(R.id.sesion);
 
         tv_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     login();
                 }
+            }
+        });
+
+        isActivate = sesion.isChecked(); //DESACTIVADO
+
+        sesion.setOnClickListener(new View.OnClickListener() {
+            //ACTIVADO
+            @Override
+            public void onClick(View v) {
+                if (isActivate) {
+                    sesion.setChecked(false);
+                }
+                isActivate = sesion.isChecked();
+
             }
         });
 
@@ -86,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                                             guardarNombre(nombre);
                                             guardarCorreo(correo);
                                             guardarUrl(imagen);
+                                            guardarEstado();
                                             startActivity(intent);
                                             break;
                                         case "FALLIDO":
@@ -139,5 +166,23 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor myEditor = preferences.edit();
         myEditor.putString("IMAGEN", my_id);
         myEditor.commit();
+    }
+
+    //Funcion para cambiar el estado al cerrar sesion
+    public static void changeEstado(Context c, boolean b) {
+        SharedPreferences preferences = c.getSharedPreferences(STRING_PREFERENCES, MODE_PRIVATE);
+        preferences.edit().putBoolean(PREFERENCE_ESTADO_BUTTON, b).apply();
+    }
+
+    //Funcion para guardar el estado de mantener sesion
+    public void guardarEstado() {
+        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES, MODE_PRIVATE);
+        preferences.edit().putBoolean(PREFERENCE_ESTADO_BUTTON, sesion.isChecked()).apply();
+    }
+
+    //Funcion para obtener si se mantiene sesion
+    public boolean obtenerEstado() {
+        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES, MODE_PRIVATE);
+        return preferences.getBoolean(PREFERENCE_ESTADO_BUTTON, false);
     }
 }

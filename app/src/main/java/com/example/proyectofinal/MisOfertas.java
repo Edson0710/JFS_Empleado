@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.proyectofinal.Adaptadores.MisOfertasAdapter;
 import com.example.proyectofinal.Adaptadores.OfertasAdapter;
 import com.example.proyectofinal.Pojo.Oferta;
 
@@ -26,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OfertasEmpleos extends AppCompatActivity {
+public class MisOfertas extends AppCompatActivity {
 
     private String JSON_URL;
     private JsonArrayRequest ArrayRequest;
@@ -38,15 +39,14 @@ public class OfertasEmpleos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ofertas_empleos);
+        setContentView(R.layout.activity_mis_ofertas);
+        id = obtenerId();
         lista = new ArrayList<Oferta>();
-        obtenerOfertas();
+        obtenerMisOfertas();
     }
-
-
     //Funcion para obtener la lista de ofertas
-    public void obtenerOfertas() {
-        JSON_URL = "http://jfsproyecto.online/verOfertasEmpleado.php?activo=" + 1;
+    public void obtenerMisOfertas() {
+        JSON_URL = "http://jfsproyecto.online/verMisOfertasEmpleado.php?id=" + id;
         ArrayRequest = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -64,7 +64,6 @@ public class OfertasEmpleos extends AppCompatActivity {
 
                         lista.add(oferta);
 
-
                     } catch (JSONException e) {
                         e.getCause();
                     }
@@ -73,8 +72,8 @@ public class OfertasEmpleos extends AppCompatActivity {
                 }
 
                 if (lista == null || lista.size() == 0) {
-                    AlertDialog.Builder myBuild = new AlertDialog.Builder(OfertasEmpleos.this);
-                    myBuild.setMessage("No existen ofertas");
+                    AlertDialog.Builder myBuild = new AlertDialog.Builder(MisOfertas.this);
+                    myBuild.setMessage("No tienes ninguna oferta");
                     myBuild.setTitle("JFS");
                     myBuild.setCancelable(false);
                     myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -95,28 +94,34 @@ public class OfertasEmpleos extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(OfertasEmpleos.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MisOfertas.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
 
-        requestQueue = Volley.newRequestQueue(OfertasEmpleos.this);
+        requestQueue = Volley.newRequestQueue(MisOfertas.this);
         requestQueue.add(ArrayRequest);
 
     }
 
     public void setuprecyclerview(List<Oferta> lista) {
-        recycler = (RecyclerView) findViewById(R.id.recyclerview_ofertas);
-        OfertasAdapter myadapter = new OfertasAdapter(this, lista);
+        recycler = (RecyclerView) findViewById(R.id.recyclerview_misofertas);
+        MisOfertasAdapter myadapter = new MisOfertasAdapter(this, lista);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(mLayoutManager);
         recycler.setAdapter(myadapter);
     }
 
+    public String obtenerId() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MisOfertas.this);
+        String id_preference = preferences.getString("ID", "1");
+        return id_preference;
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(OfertasEmpleos.this, MenuOpciones.class);
+        Intent intent = new Intent(MisOfertas.this, MenuOpciones.class);
         startActivity(intent);
     }
 }

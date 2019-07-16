@@ -26,7 +26,7 @@ import com.bumptech.glide.Glide;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MenuOpciones extends AppCompatActivity  /////////
-        implements NavigationView.OnNavigationItemSelectedListener, InfoFragment.OnFragmentInteractionListener, VistaPrincipalFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, InfoFragment.OnFragmentInteractionListener, VistaPrincipalFragment.OnFragmentInteractionListener {
 
     String id_empleado, nombre, correo, imagen;
     TextView nombreTextView, correoTextView;
@@ -54,7 +54,7 @@ public class MenuOpciones extends AppCompatActivity  /////////
 
         /////////////////////////////
         Fragment fragment = new VistaPrincipalFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,fragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main, fragment).commit();
         ///////////////////////////////
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -67,7 +67,6 @@ public class MenuOpciones extends AppCompatActivity  /////////
         Glide.with(getApplicationContext()).load(imagen).into(imageView);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
 
 
     @Override
@@ -109,41 +108,38 @@ public class MenuOpciones extends AppCompatActivity  /////////
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
- ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
         Fragment miFragment = null;
-        boolean fragmentSeleccionado=false;
- /////////////////////////////////////////////////
-
+        boolean fragmentSeleccionado = false;
+        /////////////////////////////////////////////////
 
 
         if (id == R.id.nav_Inicio) {
             miFragment = new VistaPrincipalFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
 
 
-
-        } else if (id==R.id.nav_Informacion_Perfil){
-            Intent Informacion_Perfil = new Intent(MenuOpciones.this,EditarInformacion.class);
-            startActivity(Informacion_Perfil);
+        } else if (id == R.id.nav_Informacion_Perfil) {
+            miFragment = new EditarInformacion();
+            fragmentSeleccionado = true;
 
 
         } else if (id == R.id.nav_CerrarSesion) {
+            MainActivity.changeEstado(getApplicationContext(), false);
             Intent CerrarSesion = new Intent(MenuOpciones.this, MainActivity.class);
             startActivity(CerrarSesion);
 
 
-
         } else if (id == R.id.nav_Soporte) {
             miFragment = new InfoFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
 
 
         }
 
-        if (fragmentSeleccionado==true){
+        if (fragmentSeleccionado == true) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, miFragment).commit();
         }
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

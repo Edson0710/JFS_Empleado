@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrabajosFinalizados"></activity>
+        <activity android:name=".Comentarios"></activity>
+        <activity android:name=".VerOferta" />
+        <activity android:name=".MisOfertas" />
         <activity android:name=".OfertasEmpleos" />
         <activity android:name=".VistaCurriculum" />
         <activity android:name=".EditarInformacion" />

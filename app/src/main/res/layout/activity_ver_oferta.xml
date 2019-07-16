@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerOferta">
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Oferta de Empleo"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="22sp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagen"
+        android:layout_below="@+id/nombre"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/empresa"
+        android:layout_below="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imagen"
+        android:layout_marginLeft="150dp"
+        android:text="Empresa"
+        android:textSize="18sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/calificacion"
+        android:layout_below="@+id/empresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/empresa"
+        android:text="Calificación: 5.0"
+        android:textSize="18sp"
+        android:textColor="#000"/>
+
+    <Button
+        android:id="@+id/comentarios"
+        android:layout_below="@id/calificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@id/empresa"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp"
+        android:text="Comentarios"
+        android:padding="8dp"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"/>
+
+    <Button
+        android:id="@+id/postularse"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Postularse"
+        android:background="@drawable/boton1"
+        android:padding="8dp"
+        android:textColor="#fff"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        />
+
+
+</RelativeLayout>

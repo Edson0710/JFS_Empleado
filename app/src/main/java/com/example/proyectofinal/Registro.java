@@ -349,7 +349,7 @@ public class Registro extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if (ValidarDatosLlenos()) {
-                    if (Contras()) {
+                        if (Contras()) {
                         Validar();
                     } else {
                         Toast.makeText(Registro.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
@@ -524,7 +524,7 @@ public class Registro extends AppCompatActivity
         if (nombre.equals("") || correo.equals("") || contra1.equals("") || contra2.equals("") ||
                 edad.equals("") || estatura.equals("") || telefono.equals("") || domicilio.equals("") ||
                curp.equals("") || EstadoCivil.equals("0") || Nacionalidad.equals("0") ||
-               profesion.equals("") || ingreso.equals("") ||
+                profesion.equals("") || ingreso.equals("") ||
                 NivelEstudios.equals("0") || SegundoIdioma.equals("0") || Tercer_idioma.equals("0") || Discapacidades.equals("0")) {
             Toast.makeText(Registro.this, "Complete de manera correcta los campos", Toast.LENGTH_SHORT).show();
             return false;
