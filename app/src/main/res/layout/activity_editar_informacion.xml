@@ -1,46 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditarInformacion">
 
-    <TextView
-        android:id="@+id/TextView_EditInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Informacion de mi perfil "
-        android:drawableRight="@drawable/ic_person"
-        android:textSize="25dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/TextView_EditInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:drawableRight="@drawable/ic_person"
+                android:text="Informacion de mi perfil "
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextView_EditInfo"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Nombre" />
+
+            <EditText
+                android:id="@+id/correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nombre"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Correo" />
+
+            <EditText
+                android:id="@+id/telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/correo"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Teléfono"
+                android:inputType="number"/>
+
+
+            <EditText
+                android:id="@+id/direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/telefono"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Dirección" />
+
+            <EditText
+                android:id="@+id/edad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/direccion"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Edad"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/estatura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edad"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Estatura"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/profesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/estatura"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Profesion" />
+
+
+            <EditText
+                android:id="@+id/ingreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profesion"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Ingreso"
+                android:inputType="numberDecimal"/>
+
+            <Spinner
+                android:id="@+id/Spinner_Nacionalidad"
+                android:layout_below="@+id/ingreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Nacionalidad" />
+
+            <Spinner
+                android:id="@+id/Spinner_EstadoCivil"
+                android:layout_below="@+id/Spinner_Nacionalidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Estado civil" />
+
+            <Spinner
+                android:id="@+id/Spinner_estudios"
+                android:layout_below="@id/Spinner_EstadoCivil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Nivel maximo de estudios" />
+
+            <Spinner
+                android:id="@+id/Spinner_SegundoIdioma"
+                android:layout_below="@id/Spinner_estudios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Segundo idioma que domine" />
+
+            <Spinner
+                android:id="@+id/Spinner_TercerIdioma"
+                android:layout_below="@id/Spinner_SegundoIdioma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Tercer idioma que domine" />
+
+            <Spinner
+                android:id="@+id/Spinner_Discapacidades"
+                android:layout_below="@+id/Spinner_TercerIdioma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Discapacidad" />
 
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GUARDAR"
-        android:layout_below="@+id/TextView_EditInfo"
-        android:layout_marginTop="450dp"
-        android:layout_alignStart="@+id/TextView_EditInfo"
-        android:layout_alignLeft="@+id/TextView_EditInfo"
-        android:textColor="#000"
-        android:layout_marginLeft="210dp"
-        />
+            <Button
+                android:id="@+id/guardar"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/Spinner_Discapacidades"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/boton1"
+                android:text="GUARDAR"
+                android:textColor="#fff" />
 
-
-
-
-
-
-
-
-
+        </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

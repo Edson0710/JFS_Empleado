@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (obtenerEstado()) {
             Intent intent = new Intent(MainActivity.this, MenuOpciones.class);
+            intent.putExtra("opcion",0);
             startActivity(intent);
         }
 

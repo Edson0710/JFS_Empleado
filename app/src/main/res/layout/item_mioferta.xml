@@ -12,22 +12,40 @@
         android:layout_height="150dp"
         android:orientation="vertical">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"/>
+
         <TextView
             android:id="@+id/tv_nombre"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linea"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="50dp"
+            android:layout_alignTop="@+id/imagen"
             android:text="Nombre"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="130dp"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tv_profesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nombre"
+            android:text="Profesion"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="100dp"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
         <Button
             android:id="@+id/ver_oferta"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Ver"
             android:layout_alignParentRight="true"
@@ -39,7 +57,7 @@
 
         <Button
             android:id="@+id/cancelar"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:layout_alignParentRight="true"
@@ -47,8 +65,8 @@
             android:layout_marginBottom="20dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/boton2"
+            android:textSize="12sp"
             android:padding="8dp"/>
-
 
 
         <RelativeLayout

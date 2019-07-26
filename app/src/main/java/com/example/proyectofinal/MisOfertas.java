@@ -59,8 +59,30 @@ public class MisOfertas extends AppCompatActivity {
                         oferta.setNombre(jsonObject.getString("nombre"));
                         oferta.setId(jsonObject.getString("id"));
                         oferta.setEmpresa_nombre(jsonObject.getString("empresa_nombre"));
+                        oferta.setCalificacion(jsonObject.getString("calificacion"));
                         oferta.setImagen(jsonObject.getString("imagen"));
                         oferta.setId_empresa(jsonObject.getString("id_empresa"));
+                        oferta.setProfesion(jsonObject.getString("profesion"));
+                        oferta.setPuesto(jsonObject.getString("puesto"));
+                        oferta.setCorreo(jsonObject.getString("correo"));
+                        oferta.setTelefono(jsonObject.getString("telefono"));
+                        oferta.setGiro(jsonObject.getString("giro"));
+                        oferta.setDireccion(jsonObject.getString("direccion"));
+                        oferta.setTransporte(jsonObject.getString("transporte"));
+                        oferta.setComisiones(jsonObject.getString("comisiones"));
+                        oferta.setBonos(jsonObject.getString("bonos"));
+                        oferta.setOtro1(jsonObject.getString("otro1"));
+                        oferta.setOtro2(jsonObject.getString("otro2"));
+                        oferta.setOtro3(jsonObject.getString("otro3"));
+                        oferta.setSueldo(jsonObject.getString("sueldo"));
+                        oferta.setEdad(jsonObject.getString("edad"));
+                        oferta.setEstatura(jsonObject.getString("estatura"));
+                        oferta.setNacionalidad(jsonObject.getString("nacionalidad"));
+                        oferta.setEstado_civil(jsonObject.getString("estado_civil"));
+                        oferta.setSegundo_idioma(jsonObject.getString("segundo_idioma"));
+                        oferta.setTercer_idioma(jsonObject.getString("tercer_idioma"));
+                        oferta.setDiscapacidad(jsonObject.getString("discapacidad"));
+                        oferta.setNivel_estudios(jsonObject.getString("nivel_estudios"));
 
                         lista.add(oferta);
 
@@ -122,6 +144,7 @@ public class MisOfertas extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(MisOfertas.this, MenuOpciones.class);
+        intent.putExtra("opcion", 0);
         startActivity(intent);
     }
 }

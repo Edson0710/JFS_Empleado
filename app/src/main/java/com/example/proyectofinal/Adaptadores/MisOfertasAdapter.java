@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.proyectofinal.MisOfertas;
 import com.example.proyectofinal.OfertasEmpleos;
 import com.example.proyectofinal.Pojo.Oferta;
@@ -29,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MisOfertasAdapter extends RecyclerView.Adapter<MisOfertasAdapter.MyViewHolder> {
 
@@ -57,7 +60,8 @@ public class MisOfertasAdapter extends RecyclerView.Adapter<MisOfertasAdapter.My
     public void onBindViewHolder(final MisOfertasAdapter.MyViewHolder holder, final int position) {
 
         holder.tv_nombre.setText(mData.get(position).getNombre());
-
+        holder.tv_profesion.setText(mData.get(position).getPuesto());
+        Glide.with(mContext).load(mData.get(position).getImagen()).into(holder.imageView);
         holder.ver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +76,7 @@ public class MisOfertasAdapter extends RecyclerView.Adapter<MisOfertasAdapter.My
                 intent.putExtra("empresa_nombre", empresa_nombre);
                 intent.putExtra("imagen", imagen);
                 intent.putExtra("id_empresa", id_empresa);
+                intent.putExtra("desaparecer", 1);
                 mContext.startActivity(intent);
             }
         });
@@ -94,16 +99,19 @@ public class MisOfertasAdapter extends RecyclerView.Adapter<MisOfertasAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_nombre;
+        TextView tv_nombre, tv_profesion;
         Button ver, cancelar;
+        CircleImageView imageView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
 
             tv_nombre = itemView.findViewById(R.id.tv_nombre);
+            tv_profesion = itemView.findViewById(R.id.tv_profesion);
             ver = itemView.findViewById(R.id.ver_oferta);
             cancelar = itemView.findViewById(R.id.cancelar);
+            imageView = itemView.findViewById(R.id.imagen);
 
         }
 

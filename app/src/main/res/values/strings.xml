@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JOB FINDING SERVICE</string>
+    <string name="app_name">JFS_EMPLEADO</string>
     <string name="title_activity_menu_opciones">JOB FINDING SERVICE</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

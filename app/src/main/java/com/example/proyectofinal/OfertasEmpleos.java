@@ -41,12 +41,11 @@ public class OfertasEmpleos extends AppCompatActivity {
         setContentView(R.layout.activity_ofertas_empleos);
         lista = new ArrayList<Oferta>();
         obtenerOfertas();
-    }
+}
 
-
-    //Funcion para obtener la lista de ofertas
     public void obtenerOfertas() {
-        JSON_URL = "http://jfsproyecto.online/verOfertasEmpleado.php?activo=" + 1;
+        id = obtenerId();
+        JSON_URL = "http://jfsproyecto.online/verOfertasEmpleado.php?activo=" + 1 + "&id=" + id;
         ArrayRequest = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -59,11 +58,32 @@ public class OfertasEmpleos extends AppCompatActivity {
                         oferta.setNombre(jsonObject.getString("nombre"));
                         oferta.setId(jsonObject.getString("id"));
                         oferta.setEmpresa_nombre(jsonObject.getString("empresa_nombre"));
+                        oferta.setCalificacion(jsonObject.getString("calificacion"));
                         oferta.setImagen(jsonObject.getString("imagen"));
                         oferta.setId_empresa(jsonObject.getString("id_empresa"));
+                        oferta.setProfesion(jsonObject.getString("profesion"));
+                        oferta.setPuesto(jsonObject.getString("puesto"));
+                        oferta.setCorreo(jsonObject.getString("correo"));
+                        oferta.setTelefono(jsonObject.getString("telefono"));
+                        oferta.setGiro(jsonObject.getString("giro"));
+                        oferta.setDireccion(jsonObject.getString("direccion"));
+                        oferta.setTransporte(jsonObject.getString("transporte"));
+                        oferta.setComisiones(jsonObject.getString("comisiones"));
+                        oferta.setBonos(jsonObject.getString("bonos"));
+                        oferta.setOtro1(jsonObject.getString("otro1"));
+                        oferta.setOtro2(jsonObject.getString("otro2"));
+                        oferta.setOtro3(jsonObject.getString("otro3"));
+                        oferta.setSueldo(jsonObject.getString("sueldo"));
+                        oferta.setEdad(jsonObject.getString("edad"));
+                        oferta.setEstatura(jsonObject.getString("estatura"));
+                        oferta.setNacionalidad(jsonObject.getString("nacionalidad"));
+                        oferta.setEstado_civil(jsonObject.getString("estado_civil"));
+                        oferta.setSegundo_idioma(jsonObject.getString("segundo_idioma"));
+                        oferta.setTercer_idioma(jsonObject.getString("tercer_idioma"));
+                        oferta.setDiscapacidad(jsonObject.getString("discapacidad"));
+                        oferta.setNivel_estudios(jsonObject.getString("nivel_estudios"));
 
                         lista.add(oferta);
-
 
                     } catch (JSONException e) {
                         e.getCause();
@@ -117,6 +137,13 @@ public class OfertasEmpleos extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(OfertasEmpleos.this, MenuOpciones.class);
+        intent.putExtra("opcion", 0);
         startActivity(intent);
+    }
+
+    public String obtenerId() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OfertasEmpleos.this);
+        String id_preference = preferences.getString("ID", "1");
+        return id_preference;
     }
 }
