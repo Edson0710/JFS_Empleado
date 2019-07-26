@@ -1,17 +1,20 @@
 package com.example.proyectofinal;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -22,6 +25,7 @@ public class VistaPrincipalFragment extends Fragment {
     Button Boton_OfertasEmpleos, Boton_TrabajosFinalizados, Boton_Curriculum, Boton_MisOfertas;
     TextView tv_nombre;
     CircleImageView imageView;
+    Button prueba;
 
     private OnFragmentInteractionListener mListener;
 
@@ -35,6 +39,7 @@ public class VistaPrincipalFragment extends Fragment {
         final View rootview = inflater.inflate(R.layout.fragment_vista_principal, container, false);
         tv_nombre = rootview.findViewById(R.id.nombre);
         imageView = rootview.findViewById(R.id.imagen);
+        prueba = rootview.findViewById(R.id.prueba);
 
         String nombre = obtenerNombre();
         tv_nombre.setText(nombre);
@@ -69,6 +74,12 @@ public class VistaPrincipalFragment extends Fragment {
             }
         });
 
+        prueba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mensaje1();
+            }
+        });
 
 
         return rootview;
@@ -116,6 +127,50 @@ public class VistaPrincipalFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void mensaje1() {
+        AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        myBuild.setView(inflater.inflate(R.layout.calificar, null));
+        myBuild.setTitle("JFS");
+        myBuild.setCancelable(false);
+        myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mensaje2();
+            }
+        });
+        myBuild.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = myBuild.create();
+        dialog.show();
+    }
+
+    public void mensaje2() {
+        AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.comentar, null);
+        myBuild.setView(dialogView);
+        myBuild.setTitle("JFS");
+        myBuild.setCancelable(false);
+        myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        myBuild.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = myBuild.create();
+        dialog.show();
     }
 
 

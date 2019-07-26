@@ -37,7 +37,8 @@ public class MisOfertasAdapter extends RecyclerView.Adapter<MisOfertasAdapter.My
 
     private Context mContext;
     private List<Oferta> mData;
-    String nombre, id, id_empleado, empresa_nombre, imagen, id_empresa;
+    String nombre, id, id_empleado, empresa_nombre, imagen, id_empresa, correo, telefono, giro, direccion, calificacion, transporte, comisiones, bonos,
+    otro1, otro2, otro3, profesion, puesto, sueldo, edad, estatura, nacionalidad, estado_civil, segundo_idioma, tercer_idioma, discapacidad, nivel_estudios;
 
     public MisOfertasAdapter(Context mContext, List<Oferta> mData) {
         this.mContext = mContext;
@@ -71,12 +72,56 @@ public class MisOfertasAdapter extends RecyclerView.Adapter<MisOfertasAdapter.My
                 empresa_nombre = mData.get(holder.getAdapterPosition()).getEmpresa_nombre();
                 imagen = mData.get(holder.getAdapterPosition()).getImagen();
                 id_empresa = mData.get(holder.getAdapterPosition()).getId_empresa();
+                correo = mData.get(holder.getAdapterPosition()).getCorreo();
+                telefono = mData.get(holder.getAdapterPosition()).getTelefono();
+                giro = mData.get(holder.getAdapterPosition()).getGiro();
+                direccion = mData.get(holder.getAdapterPosition()).getDireccion();
+                calificacion = mData.get(holder.getAdapterPosition()).getCalificacion();
+                transporte = mData.get(holder.getAdapterPosition()).getTransporte();
+                comisiones = mData.get(holder.getAdapterPosition()).getComisiones();
+                bonos = mData.get(holder.getAdapterPosition()).getBonos();
+                otro1 = mData.get(holder.getAdapterPosition()).getOtro1();
+                otro2 = mData.get(holder.getAdapterPosition()).getOtro2();
+                otro3 = mData.get(holder.getAdapterPosition()).getOtro3();
+                profesion = mData.get(holder.getAdapterPosition()).getProfesion();
+                puesto = mData.get(holder.getAdapterPosition()).getPuesto();
+                sueldo = mData.get(holder.getAdapterPosition()).getSueldo();
+                edad = mData.get(holder.getAdapterPosition()).getEdad();
+                estatura = mData.get(holder.getAdapterPosition()).getEstatura();
+                nacionalidad = mData.get(holder.getAdapterPosition()).getNacionalidad();
+                estado_civil = mData.get(holder.getAdapterPosition()).getEstado_civil();
+                segundo_idioma = mData.get(holder.getAdapterPosition()).getSegundo_idioma();
+                tercer_idioma = mData.get(holder.getAdapterPosition()).getTercer_idioma();
+                nivel_estudios = mData.get(holder.getAdapterPosition()).getNivel_estudios();
+                discapacidad = mData.get(holder.getAdapterPosition()).getDiscapacidad();
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("id", id);
                 intent.putExtra("empresa_nombre", empresa_nombre);
                 intent.putExtra("imagen", imagen);
                 intent.putExtra("id_empresa", id_empresa);
-                intent.putExtra("desaparecer", 1);
+                intent.putExtra("correo", correo);
+                intent.putExtra("telefono", telefono);
+                intent.putExtra("giro", giro);
+                intent.putExtra("direccion", direccion);
+                intent.putExtra("calificacion", calificacion);
+                intent.putExtra("transporte", transporte);
+                intent.putExtra("comisiones", comisiones);
+                intent.putExtra("bonos", bonos);
+                intent.putExtra("otro1", otro1);
+                intent.putExtra("otro2", otro2);
+                intent.putExtra("otro3", otro3);
+                intent.putExtra("profesion", profesion);
+                intent.putExtra("puesto", puesto);
+                intent.putExtra("sueldo", sueldo);
+                intent.putExtra("edad", edad);
+                intent.putExtra("estatura", estatura);
+                intent.putExtra("nacionalidad", nacionalidad);
+                intent.putExtra("estado_civil", estado_civil);
+                intent.putExtra("segundo_idioma", segundo_idioma);
+                intent.putExtra("tercer_idioma", tercer_idioma);
+                intent.putExtra("nivel_estudios", nivel_estudios);
+                intent.putExtra("discapacidad", discapacidad);
+                intent.putExtra("desaparecer",1);
                 mContext.startActivity(intent);
             }
         });

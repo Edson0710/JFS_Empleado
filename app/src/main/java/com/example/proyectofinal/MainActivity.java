@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                                             guardarCorreo(correo);
                                             guardarUrl(imagen);
                                             guardarEstado();
+                                            intent.putExtra("opcion", 0);
                                             startActivity(intent);
                                             break;
                                         case "FALLIDO":
