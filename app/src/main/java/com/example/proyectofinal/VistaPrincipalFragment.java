@@ -210,7 +210,7 @@ public class VistaPrincipalFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 EditText comentario = dialogView.findViewById(R.id.comentario);
                 comentar = comentario.getText().toString().trim();
-                Calificar();
+                bot();
             }
         });
         myBuild.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -292,6 +292,51 @@ public class VistaPrincipalFragment extends Fragment {
                                             mensaje0();
                                             break;
                                         case "FALLIDO":
+                                            break;
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        , new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Error conexión", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        RequestQueue x = Volley.newRequestQueue(getContext());
+        x.add(peticion);
+    }
+
+    public void bot() {
+        String id = obtenerId();
+        String url = null;
+        try {
+            url = "http://jfsproyecto.online/botEmpleado.php?comentario=" + URLEncoder.encode(comentar, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest peticion = new JsonObjectRequest
+                (
+                        Request.Method.GET,
+                        url,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    String valor = response.getString("Estado");
+
+                                    switch (valor) {
+                                        case "NO":
+                                            Toast.makeText(getContext(), "No se permite cierto lenguaje de tu comentario, vuelve a intentar", Toast.LENGTH_SHORT).show();
+                                            mensaje2();
+                                            break;
+                                        case "OK":
+                                            Calificar();
                                             break;
                                     }
 
