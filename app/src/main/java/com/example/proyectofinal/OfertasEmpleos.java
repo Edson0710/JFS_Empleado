@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -34,13 +36,23 @@ public class OfertasEmpleos extends AppCompatActivity {
     private List<Oferta> lista;
     private RecyclerView recycler;
     String id;
+    Button actualizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ofertas_empleos);
+        actualizar = findViewById(R.id.actualizar);
         lista = new ArrayList<Oferta>();
         obtenerOfertas();
+
+        actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OfertasEmpleos.this, OfertasEmpleos.class);
+                startActivity(intent);
+            }
+        });
 }
 
     public void obtenerOfertas() {

@@ -21,7 +21,19 @@
         android:id="@+id/recyclerview_ofertas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_Ofertas">
+        android:layout_below="@+id/tv_Ofertas"
+        android:layout_above="@+id/actualizar">
     </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/actualizar"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/boton2"
+        android:text="Actualizar"/>
 
 </RelativeLayout>
