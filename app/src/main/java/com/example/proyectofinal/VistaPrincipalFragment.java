@@ -13,10 +13,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -25,8 +39,9 @@ public class VistaPrincipalFragment extends Fragment {
     Button Boton_OfertasEmpleos, Boton_TrabajosFinalizados, Boton_Curriculum, Boton_MisOfertas;
     TextView tv_nombre;
     CircleImageView imageView;
-    Button prueba;
-
+    String comentar;
+    float calificar;
+    int flag=0;
     private OnFragmentInteractionListener mListener;
 
     public VistaPrincipalFragment() {
@@ -39,20 +54,25 @@ public class VistaPrincipalFragment extends Fragment {
         final View rootview = inflater.inflate(R.layout.fragment_vista_principal, container, false);
         tv_nombre = rootview.findViewById(R.id.nombre);
         imageView = rootview.findViewById(R.id.imagen);
-        prueba = rootview.findViewById(R.id.prueba);
 
         String nombre = obtenerNombre();
         tv_nombre.setText(nombre);
         String url = obtenerUrl();
         Glide.with(getContext()).load(url).into(imageView);
 
+        pendiente();
+
 
         Boton_OfertasEmpleos = rootview.findViewById(R.id.Button_OfertasEmpleos);
         Boton_OfertasEmpleos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), OfertasEmpleos.class);
-                startActivity(intent);
+                if (flag==0) {
+                    Intent intent = new Intent(getContext(), OfertasEmpleos.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "Tienes un empleo pendiente a calificar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -69,17 +89,20 @@ public class VistaPrincipalFragment extends Fragment {
         Boton_Curriculum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (getContext(), VistaCurriculum.class);
+                Intent intent = new Intent(getContext(), VistaCurriculum.class);
                 startActivity(intent);
             }
         });
 
-        prueba.setOnClickListener(new View.OnClickListener() {
+        Boton_TrabajosFinalizados = rootview.findViewById(R.id.Button_TrabajosFinalizados);
+        Boton_TrabajosFinalizados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mensaje1();
+                Intent intent = new Intent(getContext(), TrabajosFinalizados.class);
+                startActivity(intent);
             }
         });
+
 
 
         return rootview;
@@ -129,15 +152,39 @@ public class VistaPrincipalFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void mensaje1() {
+    public void mensaje0() {
         AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        myBuild.setView(inflater.inflate(R.layout.calificar, null));
+        myBuild.setMessage("Tienes un empleo pendiente por calificar");
         myBuild.setTitle("JFS");
         myBuild.setCancelable(false);
         myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                mensaje1();
+            }
+        });
+        myBuild.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = myBuild.create();
+        dialog.show();
+    }
+
+    public void mensaje1() {
+        AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.calificar, null);
+        myBuild.setView(dialogView);
+        myBuild.setTitle("JFS");
+        myBuild.setCancelable(false);
+        myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                RatingBar rating = dialogView.findViewById(R.id.rating);
+                calificar = rating.getRating();
                 mensaje2();
             }
         });
@@ -154,13 +201,16 @@ public class VistaPrincipalFragment extends Fragment {
     public void mensaje2() {
         AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.comentar, null);
+        final View dialogView = inflater.inflate(R.layout.comentar, null);
         myBuild.setView(dialogView);
         myBuild.setTitle("JFS");
         myBuild.setCancelable(false);
         myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                EditText comentario = dialogView.findViewById(R.id.comentario);
+                comentar = comentario.getText().toString().trim();
+                Calificar();
             }
         });
         myBuild.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -173,5 +223,92 @@ public class VistaPrincipalFragment extends Fragment {
         dialog.show();
     }
 
+    public void Calificar(){
+        String id = obtenerId();
+        String url = null;
+        try {
+            url = "http://jfsproyecto.online/calificarEmpleado.php?id_empleado=" + id +
+                    "&calificacion=" + calificar + "&comentario=" + URLEncoder.encode(comentar, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest peticion = new JsonObjectRequest
+                (
+                        Request.Method.GET,
+                        url,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    String valor = response.getString("Estado");
+
+                                    switch (valor) {
+                                        case "EXITOSO":
+                                            break;
+                                        case "FALLIDO":
+                                            break;
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        , new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Toast.makeText(getContext(), "Error conexión", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        RequestQueue x = Volley.newRequestQueue(getContext());
+        x.add(peticion);
+    }
+
+    public String obtenerId() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String id_preference = preferences.getString("ID", "1");
+        return id_preference;
+    }
+
+    public void pendiente() {
+        String id = obtenerId();
+        String url = "http://jfsproyecto.online/pendienteEmpleado.php?id=" + id;
+        JsonObjectRequest peticion = new JsonObjectRequest
+                (
+                        Request.Method.GET,
+                        url,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    String valor = response.getString("Estado");
+
+                                    switch (valor) {
+                                        case "EXITOSO":
+                                            flag = 1;
+                                            mensaje0();
+                                            break;
+                                        case "FALLIDO":
+                                            break;
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        , new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Error conexión", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        RequestQueue x = Volley.newRequestQueue(getContext());
+        x.add(peticion);
+    }
 
 }
