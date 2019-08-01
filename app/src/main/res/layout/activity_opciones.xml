@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Opciones">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elige tu tipo de búsqueda:"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:textSize="28sp"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_below="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Busca automáticamente en base al ingreso y puesto deseado en tu perfil "
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/buscar1"
+        android:layout_below="@+id/tv2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"
+        android:text="búsqueda automática"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_below="@+id/buscar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Busca automáticamente en base al ingreso y puesto deseado en tu perfil, pero solo muestra los resultados de la última semana "
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
+        android:padding="8dp"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/buscar2"
+        android:layout_below="@+id/tv3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"
+        android:text="búsqueda automática recientes"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_below="@+id/buscar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Busca en base  a lo que el usuario ingresa en los campos de búsqueda manualmente"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
+        android:padding="8dp"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/buscar3"
+        android:layout_below="@+id/tv4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton1"
+        android:textColor="#fff"
+        android:text="búsqueda manual"
+        android:textSize="18sp"/>
+
+
+</RelativeLayout>

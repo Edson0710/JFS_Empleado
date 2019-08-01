@@ -4,10 +4,10 @@
     <string-array name="EstadoCivil_opciones">
         <item>Estado Civil</item>
         <item>Soltero</item>
+        <item>Divorciado</item>
+        <item>Viudo</item>
         <item>Casado</item>
         <item>Union libre</item>
-        <item>Viudo</item>
-        <item>Divorciado</item>
     </string-array>
 
     <string-array name="Nacionalidad_opciones">
@@ -32,43 +32,43 @@
 
     <string-array name="Discapacidades_opciones">
         <item>Seleccione una discapacidad</item>
-        <item>Motriz</item>
-        <item>Visual</item>
         <item>Auditiva</item>
-        <item>Verbal</item>
         <item>Mental Intelectual</item>
         <item>Mental Psicosocial</item>
+        <item>Motriz</item>
+        <item>Verbal</item>
+        <item>Visual</item>
         <item>Ninguna</item>
     </string-array>
 
 
     <string-array name="SegundoIdioma_opciones">
         <item>Segundo idioma que domine</item>
-        <item>Ninguno</item>
         <item>Ingles</item>
+        <item>Chino</item>
         <item>Frances</item>
         <item>Aleman</item>
-        <item>Portugues</item>
-        <item>Chino</item>
-        <item>Japones</item>
-        <item>Ruso</item>
         <item>Italiano</item>
+        <item>Ruso</item>
+        <item>Japones</item>
+        <item>Portugues</item>
         <item>Otro</item>
+        <item>Ninguno</item>
     </string-array>
 
 
     <string-array name="TercerIdioma_opciones">
         <item>Tercer idioma que domine</item>
-        <item>Ninguno</item>
         <item>Ingles</item>
+        <item>Chino</item>
         <item>Frances</item>
         <item>Aleman</item>
-        <item>Portugues</item>
-        <item>Chino</item>
-        <item>Japones</item>
-        <item>Ruso</item>
         <item>Italiano</item>
+        <item>Ruso</item>
+        <item>Japones</item>
+        <item>Portugues</item>
         <item>Otro</item>
+        <item>Ninguno</item>
     </string-array>
 
 
@@ -84,6 +84,14 @@
         <item>Maestria</item>
         <item>Doctorado</item>
         <item>Otro</item>
+    </string-array>
+
+    <string-array name="Importancia_opciones">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
 

@@ -68,7 +68,7 @@ public class VistaPrincipalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (flag==0) {
-                    Intent intent = new Intent(getContext(), OfertasEmpleos.class);
+                    Intent intent = new Intent(getContext(), Opciones.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getContext(), "Tienes un empleo pendiente a calificar", Toast.LENGTH_SHORT).show();

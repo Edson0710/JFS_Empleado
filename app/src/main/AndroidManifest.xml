@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrabajosFinalizados"></activity>
+        <activity android:name=".Busqueda"></activity>
+        <activity android:name=".CrearBusqueda" />
+        <activity android:name=".NuevasOfertas" />
+        <activity android:name=".Opciones" />
+        <activity android:name=".TrabajosFinalizados" />
         <activity android:name=".Comentarios" />
         <activity android:name=".VerOferta" />
         <activity android:name=".MisOfertas" />

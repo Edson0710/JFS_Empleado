@@ -54,7 +54,7 @@ public class Registro extends AppCompatActivity
 
     EditText registro_Nombre, registro_Correo,
             registro_Contrasena, registro_ContrasenaConfirmar, registro_Edad, registro_Telefono,
-            registro_Domicilio, registro_Estatura, registro_CURP, registro_Ingreso, registro_Profesion;
+            registro_Domicilio, registro_Estatura, registro_CURP, registro_Ingreso, registro_Profesion, registro_Puesto;
     CircleImageView imagen;
     private Bitmap bitmap;
     private int PICK_IMAGE_REQUEST = 1;
@@ -81,6 +81,7 @@ public class Registro extends AppCompatActivity
         registro_CURP = findViewById(R.id.Registro_CURP);
         registro_Ingreso = findViewById(R.id.Registro_Ingreso);
         registro_Profesion = findViewById(R.id.Registro_Profesion);
+        registro_Puesto = findViewById(R.id.Registro_Puesto);
         imagen = findViewById(R.id.Registro_Fotografia);
 
 
@@ -441,6 +442,7 @@ public class Registro extends AppCompatActivity
                 params.put("curp", registro_CURP.getText().toString().trim());
                 params.put("nacionalidad", Nacionalidad);
                 params.put("ingreso", registro_Ingreso.getText().toString().trim());
+                params.put("puesto", registro_Puesto.getText().toString().trim());
                 params.put("profesion", registro_Profesion.getText().toString().trim());
                 params.put("idioma1", SegundoIdioma);
                 params.put("idioma2", Tercer_idioma);
@@ -509,7 +511,7 @@ public class Registro extends AppCompatActivity
     }
 
     public boolean ValidarDatosLlenos() {
-        String nombre, correo, contra1, contra2, edad, estatura, telefono, domicilio, curp, profesion, ingreso;
+        String nombre, correo, contra1, contra2, edad, estatura, telefono, domicilio, curp, profesion, ingreso, puesto;
         nombre = registro_Nombre.getText().toString().trim();
         correo = registro_Correo.getText().toString().trim();
         contra1 = registro_Contrasena.getText().toString().trim();
@@ -521,10 +523,11 @@ public class Registro extends AppCompatActivity
         curp =  registro_CURP.getText().toString().trim();
         profesion = registro_Profesion.getText().toString().trim();
         ingreso = registro_Ingreso.getText().toString().trim();
+        puesto = registro_Puesto.getText().toString().trim();
         if (nombre.equals("") || correo.equals("") || contra1.equals("") || contra2.equals("") ||
                 edad.equals("") || estatura.equals("") || telefono.equals("") || domicilio.equals("") ||
                curp.equals("") || EstadoCivil.equals("0") || Nacionalidad.equals("0") ||
-                profesion.equals("") || ingreso.equals("") ||
+                profesion.equals("") || ingreso.equals("") || puesto.equals("") ||
                 NivelEstudios.equals("0") || SegundoIdioma.equals("0") || Tercer_idioma.equals("0") || Discapacidades.equals("0")) {
             Toast.makeText(Registro.this, "Complete de manera correcta los campos", Toast.LENGTH_SHORT).show();
             return false;

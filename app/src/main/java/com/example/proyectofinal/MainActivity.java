@@ -109,10 +109,14 @@ public class MainActivity extends AppCompatActivity {
                                             String nombre = response.getString("nombre");
                                             String correo = response.getString("correo");
                                             String imagen = response.getString("imagen");
+                                            String puesto = response.getString("puesto");
+                                            String ingreso = response.getString("ingreso");
                                             guardarId(id);
                                             guardarNombre(nombre);
                                             guardarCorreo(correo);
                                             guardarUrl(imagen);
+                                            guardarPuesto(puesto);
+                                            guardarIngreso(ingreso);
                                             guardarEstado();
                                             intent.putExtra("opcion", 0);
                                             startActivity(intent);
@@ -167,6 +171,20 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         SharedPreferences.Editor myEditor = preferences.edit();
         myEditor.putString("IMAGEN", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarPuesto(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("PUESTO", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarIngreso(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("INGRESO", my_id);
         myEditor.commit();
     }
 

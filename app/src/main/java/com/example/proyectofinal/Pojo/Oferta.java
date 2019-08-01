@@ -4,7 +4,8 @@ public class Oferta {
     private String nombre, id, empresa_nombre, imagen, id_empresa, profesion, puesto, correo, telefono, giro, direccion, calificacion, transporte, comisiones, bonos
             ,otro1, otro2, otro3, sueldo, edad, estatura, nacionalidad, estado_civil, segundo_idioma, tercer_idioma, nivel_estudios, discapacidad;
 
-    public Oferta(String nombre, String id, String empresa_nombre, String imagen, String id_empresa, String profesion, String puesto, String correo, String telefono, String giro, String direccion, String calificacion, String transporte, String comisiones, String bonos, String otro1, String otro2, String otro3, String sueldo, String edad, String estatura, String nacionalidad, String estado_civil, String segundo_idioma, String tercer_idioma, String nivel_estudios, String discapacidad) {
+    float porcentaje;
+    public Oferta(String nombre, String id, String empresa_nombre, String imagen, String id_empresa, String profesion, String puesto, String correo, String telefono, String giro, String direccion, String calificacion, String transporte, String comisiones, String bonos, String otro1, String otro2, String otro3, String sueldo, String edad, String estatura, String nacionalidad, String estado_civil, String segundo_idioma, String tercer_idioma, String nivel_estudios, String discapacidad, float porcentaje) {
         this.nombre = nombre;
         this.id = id;
         this.empresa_nombre = empresa_nombre;
@@ -32,6 +33,7 @@ public class Oferta {
         this.tercer_idioma = tercer_idioma;
         this.nivel_estudios = nivel_estudios;
         this.discapacidad = discapacidad;
+        this.porcentaje = porcentaje;
     }
 
     public Oferta() {
@@ -251,5 +253,13 @@ public class Oferta {
 
     public void setDiscapacidad(String discapacidad) {
         this.discapacidad = discapacidad;
+    }
+
+    public float getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(float porcentaje) {
+        this.porcentaje = porcentaje;
     }
 }

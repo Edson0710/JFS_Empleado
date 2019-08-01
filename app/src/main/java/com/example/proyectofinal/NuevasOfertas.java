@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.proyectofinal.Adaptadores.NuevasAdapter;
 import com.example.proyectofinal.Adaptadores.OfertasAdapter;
 import com.example.proyectofinal.Pojo.Oferta;
 
@@ -28,8 +29,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OfertasEmpleos extends AppCompatActivity {
-
+public class NuevasOfertas extends AppCompatActivity {
     private String JSON_URL;
     private JsonArrayRequest ArrayRequest;
     private RequestQueue requestQueue;
@@ -41,7 +41,7 @@ public class OfertasEmpleos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ofertas_empleos);
+        setContentView(R.layout.activity_nuevas_ofertas);
         actualizar = findViewById(R.id.actualizar);
         lista = new ArrayList<Oferta>();
         obtenerOfertas();
@@ -49,17 +49,17 @@ public class OfertasEmpleos extends AppCompatActivity {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfertasEmpleos.this, OfertasEmpleos.class);
+                Intent intent = new Intent(NuevasOfertas.this, NuevasOfertas.class);
                 startActivity(intent);
             }
         });
     }
 
     public void obtenerOfertas() {
+        id = obtenerId();
         final String puesto = obtenerPuesto().toLowerCase();
         final String ingreso = obtenerIngreso();
-        id = obtenerId();
-        JSON_URL = "http://jfsproyecto.online/verOfertasEmpleado.php?activo=" + 1 + "&id=" + id;
+        JSON_URL = "http://jfsproyecto.online/verOfertasNuevasEmpleado.php?activo=" + 1 + "&id=" + id;
         ArrayRequest = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -96,11 +96,9 @@ public class OfertasEmpleos extends AppCompatActivity {
                         oferta.setTercer_idioma(jsonObject.getString("tercer_idioma"));
                         oferta.setDiscapacidad(jsonObject.getString("discapacidad"));
                         oferta.setNivel_estudios(jsonObject.getString("nivel_estudios"));
-
                         if (puesto.equals(jsonObject.getString("puesto").toLowerCase()) || ingreso.equals(jsonObject.getString("sueldo"))) {
                             lista.add(oferta);
                         }
-
                     } catch (JSONException e) {
                         e.getCause();
                     }
@@ -109,8 +107,8 @@ public class OfertasEmpleos extends AppCompatActivity {
                 }
 
                 if (lista == null || lista.size() == 0) {
-                    AlertDialog.Builder myBuild = new AlertDialog.Builder(OfertasEmpleos.this);
-                    myBuild.setMessage("No existen ofertas");
+                    AlertDialog.Builder myBuild = new AlertDialog.Builder(NuevasOfertas.this);
+                    myBuild.setMessage("No hay ofertas recientes");
                     myBuild.setTitle("JFS");
                     myBuild.setCancelable(false);
                     myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -131,19 +129,19 @@ public class OfertasEmpleos extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(OfertasEmpleos.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(NuevasOfertas.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
 
-        requestQueue = Volley.newRequestQueue(OfertasEmpleos.this);
+        requestQueue = Volley.newRequestQueue(NuevasOfertas.this);
         requestQueue.add(ArrayRequest);
 
     }
 
     public void setuprecyclerview(List<Oferta> lista) {
-        recycler = (RecyclerView) findViewById(R.id.recyclerview_ofertas);
-        OfertasAdapter myadapter = new OfertasAdapter(this, lista);
+        recycler = (RecyclerView) findViewById(R.id.recyclerview_nuevas);
+        NuevasAdapter myadapter = new NuevasAdapter(this, lista);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(mLayoutManager);
         recycler.setAdapter(myadapter);
@@ -152,24 +150,24 @@ public class OfertasEmpleos extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(OfertasEmpleos.this, Opciones.class);
+        Intent intent = new Intent(NuevasOfertas.this, Opciones.class);
         startActivity(intent);
     }
 
     public String obtenerId() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OfertasEmpleos.this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(NuevasOfertas.this);
         String id_preference = preferences.getString("ID", "1");
         return id_preference;
     }
 
     public String obtenerPuesto() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OfertasEmpleos.this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(NuevasOfertas.this);
         String id_preference = preferences.getString("PUESTO", "1");
         return id_preference;
     }
 
     public String obtenerIngreso() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OfertasEmpleos.this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(NuevasOfertas.this);
         String id_preference = preferences.getString("INGRESO", "1");
         return id_preference;
     }

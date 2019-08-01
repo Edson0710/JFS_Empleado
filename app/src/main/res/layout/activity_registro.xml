@@ -162,6 +162,13 @@
                 android:inputType="text" />
 
             <EditText
+                android:id="@+id/Registro_Puesto"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Puesto deseado" />
+
+            <EditText
                 android:id="@+id/Registro_Ingreso"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
@@ -219,7 +226,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="#e0e0e0" />
-
 
 
             <Button

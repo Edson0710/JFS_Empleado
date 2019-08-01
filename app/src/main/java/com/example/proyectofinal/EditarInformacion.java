@@ -38,7 +38,7 @@ public class EditarInformacion extends Fragment {
     Spinner TercerIdioma_opciones;
     Spinner NivelEstudios_opciones;
     Spinner Nacionalidad_opciones;
-    EditText et_nombre, et_correo, et_telefono, et_direccion, et_edad, et_estatura, et_profesion, et_ingreso;
+    EditText et_nombre, et_correo, et_telefono, et_direccion, et_edad, et_estatura, et_profesion, et_ingreso, et_puesto;
     String EstadoCivil, NivelEstudios, SegundoIdioma, Tercer_idioma, Discapacidades, Nacionalidad;
     String nombre, id, puesto, profesion, ingreso, edad, estatura, correo, telefono, direccion;
     Button guardar;
@@ -55,6 +55,7 @@ public class EditarInformacion extends Fragment {
         et_estatura = rootview.findViewById(R.id.estatura);
         et_profesion = rootview.findViewById(R.id.profesion);
         et_ingreso = rootview.findViewById(R.id.ingreso);
+        et_puesto = rootview.findViewById(R.id.puesto);
         guardar = rootview.findViewById(R.id.guardar);
 
         guardar.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +64,7 @@ public class EditarInformacion extends Fragment {
                 mensaje();
             }
         });
-
+        informacion();
         //-----------------------------------------------------------------------------------------------------------------//
 
         Nacionalidad_opciones = rootview.findViewById(R.id.Spinner_Nacionalidad);
@@ -316,7 +317,7 @@ public class EditarInformacion extends Fragment {
 
 //-----------------------------------------------------------------------------------------------------------------///
 
-        informacion();
+
 
         return rootview;
     }
@@ -345,6 +346,21 @@ public class EditarInformacion extends Fragment {
                                             estatura = response.getString("estatura");
                                             profesion = response.getString("profesion");
                                             ingreso = response.getString("ingreso");
+                                            Nacionalidad = response.getString("nacionalidad");
+                                            EstadoCivil = response.getString("estado_civil");
+                                            SegundoIdioma = response.getString("segundo_idioma");
+                                            Tercer_idioma = response.getString("tercer_idioma");
+                                            Discapacidades = response.getString("discapacidad");
+                                            NivelEstudios = response.getString("nivel_estudios");
+                                            puesto = response.getString("puesto");
+
+                                            Nacionalidad_opciones.setSelection(Integer.parseInt(Nacionalidad));
+                                            EstadoCivil_opciones.setSelection(Integer.parseInt(EstadoCivil));
+                                            SegundoIdioma_opciones.setSelection(Integer.parseInt(SegundoIdioma));
+                                            TercerIdioma_opciones.setSelection(Integer.parseInt(Tercer_idioma));
+                                            NivelEstudios_opciones.setSelection(Integer.parseInt(NivelEstudios));
+                                            Discapacidades_opciones.setSelection(Integer.parseInt(Discapacidades));
+
 
                                             et_nombre.setText(nombre);
                                             et_correo.setText(correo);
@@ -354,6 +370,7 @@ public class EditarInformacion extends Fragment {
                                             et_estatura.setText(estatura);
                                             et_profesion.setText(profesion);
                                             et_ingreso.setText(ingreso);
+                                            et_puesto.setText(puesto);
                                             break;
                                         case "FALLIDO":
                                             Toast.makeText(getContext(), "Fallo de conexión", Toast.LENGTH_SHORT).show();
@@ -393,6 +410,7 @@ public class EditarInformacion extends Fragment {
                 guardarCambios();
                 Toast.makeText(getContext(), "Cambios guardados", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), MenuOpciones.class);
+                intent.putExtra("opcion",1);
                 startActivity(intent);
             }
         });
@@ -417,8 +435,11 @@ public class EditarInformacion extends Fragment {
         edad = et_edad.getText().toString().trim();
         estatura = et_estatura.getText().toString().trim();
         ingreso = et_ingreso.getText().toString().trim();
+        puesto = et_puesto.getText().toString().trim();
         guardarNombre(nombre);
         guardarCorreo(correo);
+        guardarPuesto(puesto);
+        guardarIngreso(ingreso);
         String url = null;
         try {
             url = "http://jfsproyecto.online/editarInfoEmpleado.php?nombre=" + URLEncoder.encode(nombre, "UTF-8") + "&id=" + id
@@ -426,7 +447,7 @@ public class EditarInformacion extends Fragment {
                     + "&ingreso=" + ingreso + "&edad=" + edad + "&estatura=" + estatura + "&nacionalidad=" + Nacionalidad
                     + "&correo=" + correo + "&telefono=" + telefono + "&direccion=" + direccion
                     + "&estado=" + EstadoCivil + "&segundo=" + SegundoIdioma + "&tercer=" + Tercer_idioma + "&discapacidad=" + Discapacidades
-                    + "&estudios=" + NivelEstudios;
+                    + "&estudios=" + NivelEstudios + "&puesto=" + URLEncoder.encode(puesto, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -476,6 +497,20 @@ public class EditarInformacion extends Fragment {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor myEditor = preferences.edit();
         myEditor.putString("CORREO", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarPuesto(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("PUESTO", my_id);
+        myEditor.commit();
+    }
+
+    public void guardarIngreso(String my_id) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("INGRESO", my_id);
         myEditor.commit();
     }
 }
