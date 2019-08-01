@@ -42,7 +42,7 @@ public class Busqueda extends AppCompatActivity {
         setContentView(R.layout.activity_busqueda);
         profesion = getIntent().getExtras().getString("profesion").toLowerCase();
         ImportanciaProfesion = getIntent().getExtras().getInt("ImportanciaProfesion");
-        sueldo = getIntent().getExtras().getString("sueldo").toLowerCase();
+        sueldo = getIntent().getExtras().getString("sueldo");
         ImportanciaSueldo = getIntent().getExtras().getInt("ImportanciaSueldo");
         edad = getIntent().getExtras().getString("edad");
         ImportanciaEdad = getIntent().getExtras().getInt("ImportanciaEdad");
@@ -79,55 +79,81 @@ public class Busqueda extends AppCompatActivity {
                     try {
                         total = 0;
                         jsonObject = response.getJSONObject(i);
-                        Oferta empleado = new Oferta();
-                        empleado.setNombre(jsonObject.getString("nombre"));
-                        empleado.setId(jsonObject.getString("id"));
-                        empleado.setImagen(jsonObject.getString("imagen"));
-                        empleado.setEdad(jsonObject.getString("edad"));
+                        Oferta oferta = new Oferta();
+                        oferta.setNombre(jsonObject.getString("nombre"));
+                        oferta.setId(jsonObject.getString("id"));
+                        oferta.setEmpresa_nombre(jsonObject.getString("empresa_nombre"));
+                        oferta.setCalificacion(jsonObject.getString("calificacion"));
+                        oferta.setImagen(jsonObject.getString("imagen"));
+                        oferta.setId_empresa(jsonObject.getString("id_empresa"));
+                        oferta.setProfesion(jsonObject.getString("profesion"));
+                        oferta.setPuesto(jsonObject.getString("puesto"));
+                        oferta.setCorreo(jsonObject.getString("correo"));
+                        oferta.setTelefono(jsonObject.getString("telefono"));
+                        oferta.setGiro(jsonObject.getString("giro"));
+                        oferta.setDireccion(jsonObject.getString("direccion"));
+                        oferta.setTransporte(jsonObject.getString("transporte"));
+                        oferta.setComisiones(jsonObject.getString("comisiones"));
+                        oferta.setBonos(jsonObject.getString("bonos"));
+                        oferta.setOtro1(jsonObject.getString("otro1"));
+                        oferta.setOtro2(jsonObject.getString("otro2"));
+                        oferta.setOtro3(jsonObject.getString("otro3"));
+                        oferta.setNacionalidad(jsonObject.getString("nacionalidad"));
+                        oferta.setEstado_civil(jsonObject.getString("estado_civil"));
+                        oferta.setSegundo_idioma(jsonObject.getString("segundo_idioma"));
+                        oferta.setTercer_idioma(jsonObject.getString("tercer_idioma"));
+                        oferta.setDiscapacidad(jsonObject.getString("discapacidad"));
+                        oferta.setNivel_estudios(jsonObject.getString("nivel_estudios"));
+
+                        oferta.setEdad(jsonObject.getString("edad"));
                         if (jsonObject.getString("edad").equals(edad)) {
                             total += ImportanciaEdad;
                         }
-                        empleado.setEstatura(jsonObject.getString("estatura"));
+
+                        oferta.setEstatura(jsonObject.getString("estatura"));
                         if (jsonObject.getString("estatura").equals(estatura)) {
                             total += ImportanciaEstatura;
                         }
-                        empleado.setProfesion(jsonObject.getString("profesion"));
+
+                        oferta.setProfesion(jsonObject.getString("profesion"));
                         if (jsonObject.getString("profesion").toLowerCase().equals(profesion.toLowerCase())) {
                             total += ImportanciaProfesion;
                         }
-                        empleado.setSueldo(jsonObject.getString("ingreso_deseado"));
-                        if (jsonObject.getString("ingreso_deseado").equals(sueldo)) {
+
+                        oferta.setSueldo(jsonObject.getString("sueldo"));
+                        if (jsonObject.getString("sueldo").equals(sueldo)) {
                             total += ImportanciaSueldo;
                         }
-                        empleado.setEstado_civil(jsonObject.getString("estado_civil"));
+
+                        oferta.setEstado_civil(jsonObject.getString("estado_civil"));
                         if (jsonObject.getString("estado_civil").equals(estado)) {
                             total += ImportanciaEstado;
                         }
-                        empleado.setNacionalidad(jsonObject.getString("nacionalidad"));
+                        oferta.setNacionalidad(jsonObject.getString("nacionalidad"));
                         if (jsonObject.getString("nacionalidad").equals(nacionalidad)) {
                             total += ImportanciaNacionalidad;
                         }
-                        empleado.setSegundo_idioma(jsonObject.getString("segundo_idioma"));
+                        oferta.setSegundo_idioma(jsonObject.getString("segundo_idioma"));
                         if (jsonObject.getString("segundo_idioma").equals(segundo)) {
                             total += ImportanciaSegundo;
                         }
-                        empleado.setTercer_idioma(jsonObject.getString("tercer_idioma"));
+                        oferta.setTercer_idioma(jsonObject.getString("tercer_idioma"));
                         if (jsonObject.getString("tercer_idioma").equals(tercer)) {
                             total += ImportanciaTercer;
                         }
-                        empleado.setDiscapacidad(jsonObject.getString("discapacidad"));
+                        oferta.setDiscapacidad(jsonObject.getString("discapacidad"));
                         if (jsonObject.getString("discapacidad").equals(discapacidad)) {
                             total += ImportanciaDiscapacidad;
                         }
-                        empleado.setNivel_estudios(jsonObject.getString("nivel_estudios"));
+                        oferta.setNivel_estudios(jsonObject.getString("nivel_estudios"));
                         if (jsonObject.getString("nivel_estudios").equals(estudios)) {
                             total += ImportanciaEstudios;
                         }
                         porcentaje = (total / importancia) * 100;
-                        empleado.setPorcentaje(porcentaje);
+                        oferta.setPorcentaje(porcentaje);
 
                         if (porcentaje >= 50) {
-                            lista.add(empleado);
+                            lista.add(oferta);
                         }
 
                     } catch (JSONException e) {
@@ -138,7 +164,7 @@ public class Busqueda extends AppCompatActivity {
 
                 if (lista == null || lista.size() == 0) {
                     AlertDialog.Builder myBuild = new AlertDialog.Builder(Busqueda.this);
-                    myBuild.setMessage("No hay resultados por arriba de la media");
+                    myBuild.setMessage("No hay resultados por arriba de la media\nSugerencias de búsqueda:\n- Intenta usar palabras más generales\n- Comprueba que no haya faltas de ortografía\n- Usa palabras completas y no abreviaturas");
                     myBuild.setTitle("JFS");
                     myBuild.setCancelable(false);
                     myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
