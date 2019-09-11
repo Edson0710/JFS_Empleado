@@ -332,7 +332,7 @@ public class VistaPrincipalFragment extends Fragment {
 
                                     switch (valor) {
                                         case "NO":
-                                            Toast.makeText(getContext(), "No se permite cierto lenguaje de tu comentario, vuelve a intentar", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "No se permite cierto lenguaje de tu comentario, vuelve a intentar", Toast.LENGTH_LONG).show();
                                             mensaje2();
                                             break;
                                         case "OK":
