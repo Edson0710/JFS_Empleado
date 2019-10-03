@@ -70,7 +70,7 @@ public class EditarInformacion extends Fragment {
         Nacionalidad_opciones = rootview.findViewById(R.id.Spinner_Nacionalidad);
 
         ArrayAdapter<CharSequence> adapter0 = ArrayAdapter.createFromResource
-                (getContext(), R.array.Nacionalidad_opciones, android.R.layout.simple_spinner_item);
+                (getContext(), R.array.Nacionalidad_opciones, android.R.layout.simple_spinner_dropdown_item);
         Nacionalidad_opciones.setAdapter(adapter0);
         Nacionalidad_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -125,7 +125,7 @@ public class EditarInformacion extends Fragment {
         EstadoCivil_opciones = rootview.findViewById(R.id.Spinner_EstadoCivil);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
-                (getContext(), R.array.EstadoCivil_opciones, android.R.layout.simple_spinner_item);
+                (getContext(), R.array.EstadoCivil_opciones, android.R.layout.simple_spinner_dropdown_item);
         EstadoCivil_opciones.setAdapter(adapter);
         EstadoCivil_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -157,7 +157,7 @@ public class EditarInformacion extends Fragment {
         Discapacidades_opciones = rootview.findViewById(R.id.Spinner_Discapacidades);
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource
-                (getContext(), R.array.Discapacidades_opciones, android.R.layout.simple_spinner_item);
+                (getContext(), R.array.Discapacidades_opciones, android.R.layout.simple_spinner_dropdown_item);
         Discapacidades_opciones.setAdapter(adapter1);
         Discapacidades_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -194,7 +194,7 @@ public class EditarInformacion extends Fragment {
         SegundoIdioma_opciones = rootview.findViewById(R.id.Spinner_SegundoIdioma);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource
-                (getContext(), R.array.SegundoIdioma_opciones, android.R.layout.simple_spinner_item);
+                (getContext(), R.array.SegundoIdioma_opciones, android.R.layout.simple_spinner_dropdown_item);
         SegundoIdioma_opciones.setAdapter(adapter2);
         SegundoIdioma_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -236,7 +236,7 @@ public class EditarInformacion extends Fragment {
         TercerIdioma_opciones = rootview.findViewById(R.id.Spinner_TercerIdioma);
 
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource
-                (getContext(), R.array.TercerIdioma_opciones, android.R.layout.simple_spinner_item);
+                (getContext(), R.array.TercerIdioma_opciones, android.R.layout.simple_spinner_dropdown_item);
         TercerIdioma_opciones.setAdapter(adapter3);
         TercerIdioma_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -278,7 +278,7 @@ public class EditarInformacion extends Fragment {
         NivelEstudios_opciones = rootview.findViewById(R.id.Spinner_estudios);
 
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource
-                (getContext(), R.array.NivelEstudios_opciones, android.R.layout.simple_spinner_item);
+                (getContext(), R.array.NivelEstudios_opciones, android.R.layout.simple_spinner_dropdown_item);
         NivelEstudios_opciones.setAdapter(adapter4);
         NivelEstudios_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

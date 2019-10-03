@@ -130,17 +130,19 @@
             <Spinner
                 android:id="@+id/Spinner_Nacionalidad"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#9f9f9f"
                 android:hint="Nacionalidad" />
 
             <Spinner
                 android:id="@+id/Spinner_EstadoCivil"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#9f9f9f"
                 android:hint="Estado civil" />
 
 
@@ -179,33 +181,37 @@
             <Spinner
                 android:id="@+id/Spinner_estudios"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#9f9f9f"
                 android:hint="Nivel maximo de estudios" />
 
             <Spinner
                 android:id="@+id/Spinner_SegundoIdioma"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#9f9f9f"
                 android:hint="Segundo idioma que domine" />
 
             <Spinner
                 android:id="@+id/Spinner_TercerIdioma"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#9f9f9f"
                 android:hint="Tercer idioma que domine" />
 
             <Spinner
                 android:id="@+id/Spinner_Discapacidades"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#9f9f9f"
                 android:hint="Discapacidad" />
 
 

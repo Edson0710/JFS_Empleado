@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,6 +36,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -99,7 +101,7 @@ public class Registro extends AppCompatActivity
         Nacionalidad_opciones = findViewById(R.id.Spinner_Nacionalidad);
 
         ArrayAdapter<CharSequence> adapter0 = ArrayAdapter.createFromResource
-                (Registro.this, R.array.Nacionalidad_opciones, android.R.layout.simple_spinner_item);
+                (Registro.this, R.array.Nacionalidad_opciones, android.R.layout.simple_spinner_dropdown_item);
         Nacionalidad_opciones.setAdapter(adapter0);
         Nacionalidad_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -154,7 +156,7 @@ public class Registro extends AppCompatActivity
         EstadoCivil_opciones = findViewById(R.id.Spinner_EstadoCivil);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
-                (Registro.this, R.array.EstadoCivil_opciones, android.R.layout.simple_spinner_item);
+                (Registro.this, R.array.EstadoCivil_opciones, android.R.layout.simple_spinner_dropdown_item);
         EstadoCivil_opciones.setAdapter(adapter);
         EstadoCivil_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -186,7 +188,7 @@ public class Registro extends AppCompatActivity
         Discapacidades_opciones = findViewById(R.id.Spinner_Discapacidades);
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource
-                (Registro.this, R.array.Discapacidades_opciones, android.R.layout.simple_spinner_item);
+                (Registro.this, R.array.Discapacidades_opciones, android.R.layout.simple_spinner_dropdown_item);
         Discapacidades_opciones.setAdapter(adapter1);
         Discapacidades_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -223,7 +225,7 @@ public class Registro extends AppCompatActivity
         SegundoIdioma_opciones = findViewById(R.id.Spinner_SegundoIdioma);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource
-                (Registro.this, R.array.SegundoIdioma_opciones, android.R.layout.simple_spinner_item);
+                (Registro.this, R.array.SegundoIdioma_opciones, android.R.layout.simple_spinner_dropdown_item);
         SegundoIdioma_opciones.setAdapter(adapter2);
         SegundoIdioma_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -265,7 +267,7 @@ public class Registro extends AppCompatActivity
         TercerIdioma_opciones = findViewById(R.id.Spinner_TercerIdioma);
 
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource
-                (Registro.this, R.array.TercerIdioma_opciones, android.R.layout.simple_spinner_item);
+                (Registro.this, R.array.TercerIdioma_opciones, android.R.layout.simple_spinner_dropdown_item);
         TercerIdioma_opciones.setAdapter(adapter3);
         TercerIdioma_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -307,7 +309,7 @@ public class Registro extends AppCompatActivity
         NivelEstudios_opciones = findViewById(R.id.Spinner_estudios);
 
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource
-                (Registro.this, R.array.NivelEstudios_opciones, android.R.layout.simple_spinner_item);
+                (Registro.this, R.array.NivelEstudios_opciones, android.R.layout.simple_spinner_dropdown_item);
         NivelEstudios_opciones.setAdapter(adapter4);
         NivelEstudios_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -399,68 +401,7 @@ public class Registro extends AppCompatActivity
 
     //--------------------------------------------------------------------------------------------------//
 
-    private void Registrar() {
-        //Mostrar el diálogo de progreso
-        final ProgressDialog loading = ProgressDialog.show(this, "Registrando...", "Espere por favor...", false, false);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-                        //Descartar el diálogo de progreso
-                        loading.dismiss();
-                        //Mostrando el mensaje de la respuesta
-                        Toast.makeText(Registro.this, s, Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        //Descartar el diálogo de progreso
-                        loading.dismiss();
 
-                        //Showing toast
-                        Toast.makeText(Registro.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Convertir bits a cadena
-                String imagen = getStringImagen(bitmap);
-
-
-                //Creación de parámetros
-                Map<String, String> params = new Hashtable<String, String>();
-
-                //Agregando de parámetros
-                params.put("nombre", registro_Nombre.getText().toString().trim());
-                params.put("correo", registro_Correo.getText().toString().trim());
-                params.put("contra", registro_Contrasena.getText().toString().trim());
-                params.put("edad", registro_Edad.getText().toString().trim());
-                params.put("direccion", registro_Domicilio.getText().toString().trim());
-                params.put("telefono", registro_Telefono.getText().toString().trim());
-                params.put("estatura", registro_Estatura.getText().toString().trim());
-                params.put("curp", registro_CURP.getText().toString().trim());
-                params.put("nacionalidad", Nacionalidad);
-                params.put("ingreso", registro_Ingreso.getText().toString().trim());
-                params.put("puesto", registro_Puesto.getText().toString().trim());
-                params.put("profesion", registro_Profesion.getText().toString().trim());
-                params.put("idioma1", SegundoIdioma);
-                params.put("idioma2", Tercer_idioma);
-                params.put("estado", EstadoCivil);
-                params.put("estudios", NivelEstudios);
-                params.put("discapacidad", Discapacidades);
-                params.put("imagen", imagen);
-                //Parámetros de retorno
-                return params;
-            }
-        };
-
-        //Creación de una cola de solicitudes
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-        //Agregar solicitud a la cola
-        requestQueue.add(stringRequest);
-    }
 
     public boolean Contras() {
         if (registro_Contrasena.getText().toString().trim().equals(registro_ContrasenaConfirmar.getText().toString().trim())) {
@@ -485,8 +426,37 @@ public class Registro extends AppCompatActivity
 
                                     switch (valor) {
                                         case "NO":
-                                            Registrar();
-                                            Intent intent = new Intent(Registro.this, MainActivity.class);
+                                           String nombre = registro_Nombre.getText().toString().trim();
+                                            String correo = registro_Correo.getText().toString().trim();
+                                            String contra = registro_Contrasena.getText().toString().trim();
+                                            String edad = registro_Edad.getText().toString().trim();
+                                            String domicilio = registro_Domicilio.getText().toString().trim();
+                                            String telefono = registro_Telefono.getText().toString().trim();
+                                            String estatura = registro_Estatura.getText().toString().trim();
+                                            String curp = registro_CURP.getText().toString().trim();
+                                            String ingreso = registro_Ingreso.getText().toString().trim();
+                                            String puesto = registro_Puesto.getText().toString().trim();
+                                            String profesion = registro_Profesion.getText().toString().trim();
+                                            Intent intent = new Intent(Registro.this, Codigo.class);
+                                            intent.putExtra("nombre", nombre);
+                                            intent.putExtra("correo", correo);
+                                            intent.putExtra("contra", contra);
+                                            intent.putExtra("edad", edad);
+                                            intent.putExtra("domicilio", domicilio);
+                                            intent.putExtra("telefono", telefono);
+                                            intent.putExtra("estatura", estatura);
+                                            intent.putExtra("curp", curp);
+                                            intent.putExtra("ingreso", ingreso);
+                                            intent.putExtra("puesto", puesto);
+                                            intent.putExtra("profesion", profesion);
+                                            intent.putExtra("nacionalidad", Nacionalidad);
+                                            intent.putExtra("estado", EstadoCivil);
+                                            intent.putExtra("estudios", NivelEstudios);
+                                            intent.putExtra("segundo", SegundoIdioma);
+                                            intent.putExtra("tercer", Tercer_idioma);
+                                            intent.putExtra("discapacidad", Discapacidades);
+                                            intent.putExtra("bitmap", bitmap);
+
                                             startActivity(intent);
                                             break;
                                         case "SI":
@@ -524,6 +494,14 @@ public class Registro extends AppCompatActivity
         profesion = registro_Profesion.getText().toString().trim();
         ingreso = registro_Ingreso.getText().toString().trim();
         puesto = registro_Puesto.getText().toString().trim();
+        
+        /*if (!validarEmail(correo)){
+            Toast.makeText(this, "Correo no válido", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Correo valido", Toast.LENGTH_SHORT).show();
+        }
+        
+        return false;*/
         if (nombre.equals("") || correo.equals("") || contra1.equals("") || contra2.equals("") ||
                 edad.equals("") || estatura.equals("") || telefono.equals("") || domicilio.equals("") ||
                curp.equals("") || EstadoCivil.equals("0") || Nacionalidad.equals("0") ||
@@ -532,18 +510,28 @@ public class Registro extends AppCompatActivity
             Toast.makeText(Registro.this, "Complete de manera correcta los campos", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            if (registro_Telefono.getText().toString().trim().length() == 10){
-                if (registro_CURP.getText().toString().trim().length() == 18){
-                    return true;
+            if (!validarEmail(correo)){
+                Toast.makeText(this, "El correo no es válido", Toast.LENGTH_SHORT).show();
+                return  false;
+            } else {
+                if (registro_Telefono.getText().toString().trim().length() == 10) {
+                    if (registro_CURP.getText().toString().trim().length() == 18) {
+                        return true;
+                    } else {
+                        Toast.makeText(Registro.this, "Ingrese una CURP válida", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
                 } else {
-                    Toast.makeText(Registro.this, "Ingrese una CURP válida", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registro.this, "Ingrese un número válido", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-            } else{
-                Toast.makeText(Registro.this, "Ingrese un número válido", Toast.LENGTH_SHORT).show();
-                return false;
             }
         }
+    }
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
 

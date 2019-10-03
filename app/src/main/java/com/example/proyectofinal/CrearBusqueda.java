@@ -76,7 +76,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaProfesion_opciones = findViewById(R.id.profesion_importancia);
 
         ArrayAdapter<CharSequence> adapterI1 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaProfesion_opciones.setAdapter(adapterI1);
         ImportanciaProfesion_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -95,7 +95,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaSueldo_opciones = findViewById(R.id.sueldo_importancia);
 
         ArrayAdapter<CharSequence> adapterI2 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaSueldo_opciones.setAdapter(adapterI2);
         ImportanciaSueldo_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -114,7 +114,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaEstatura_opciones = findViewById(R.id.estatura_importancia);
 
         ArrayAdapter<CharSequence> adapterI3 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaEstatura_opciones.setAdapter(adapterI3);
         ImportanciaEstatura_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -133,7 +133,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaEdad_opciones = findViewById(R.id.edad_importancia);
 
         ArrayAdapter<CharSequence> adapterI4 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaEdad_opciones.setAdapter(adapterI4);
         ImportanciaEdad_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -152,7 +152,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaNacionalidad_opciones = findViewById(R.id.nacionalidad_importancia);
 
         ArrayAdapter<CharSequence> adapterI5 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaNacionalidad_opciones.setAdapter(adapterI5);
         ImportanciaNacionalidad_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -171,7 +171,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaEstado_opciones = findViewById(R.id.estado_importancia);
 
         ArrayAdapter<CharSequence> adapterI6 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaEstado_opciones.setAdapter(adapterI6);
         ImportanciaEstado_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -190,7 +190,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaEstudios_opciones = findViewById(R.id.estudios_importancia);
 
         ArrayAdapter<CharSequence> adapterI7 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaEstudios_opciones.setAdapter(adapterI7);
         ImportanciaEstudios_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -209,7 +209,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaSegundo_opciones = findViewById(R.id.segundo_importancia);
 
         ArrayAdapter<CharSequence> adapterI8 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaSegundo_opciones.setAdapter(adapterI8);
         ImportanciaSegundo_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -228,7 +228,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaTercer_opciones = findViewById(R.id.tercer_importancia);
 
         ArrayAdapter<CharSequence> adapterI9 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaTercer_opciones.setAdapter(adapterI9);
         ImportanciaTercer_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -247,7 +247,7 @@ public class CrearBusqueda extends AppCompatActivity {
         ImportanciaDiscapacidad_opciones = findViewById(R.id.discapacidad_importancia);
 
         ArrayAdapter<CharSequence> adapterI10 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Importancia_opciones, android.R.layout.simple_spinner_dropdown_item);
         ImportanciaDiscapacidad_opciones.setAdapter(adapterI10);
         ImportanciaDiscapacidad_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -266,7 +266,7 @@ public class CrearBusqueda extends AppCompatActivity {
         Nacionalidad_opciones = findViewById(R.id.Spinner_Nacionalidad);
 
         ArrayAdapter<CharSequence> adapter0 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Nacionalidad_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Nacionalidad_opciones, android.R.layout.simple_spinner_dropdown_item);
         Nacionalidad_opciones.setAdapter(adapter0);
         Nacionalidad_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -321,7 +321,7 @@ public class CrearBusqueda extends AppCompatActivity {
         EstadoCivil_opciones = findViewById(R.id.Spinner_EstadoCivil);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.EstadoCivil_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.EstadoCivil_opciones, android.R.layout.simple_spinner_dropdown_item);
         EstadoCivil_opciones.setAdapter(adapter);
         EstadoCivil_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -354,7 +354,7 @@ public class CrearBusqueda extends AppCompatActivity {
         Discapacidades_opciones = findViewById(R.id.Spinner_Discapacidades);
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.Discapacidades_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.Discapacidades_opciones, android.R.layout.simple_spinner_dropdown_item);
         Discapacidades_opciones.setAdapter(adapter1);
         Discapacidades_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -391,7 +391,7 @@ public class CrearBusqueda extends AppCompatActivity {
         SegundoIdioma_opciones = findViewById(R.id.Spinner_SegundoIdioma);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.SegundoIdioma_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.SegundoIdioma_opciones, android.R.layout.simple_spinner_dropdown_item);
         SegundoIdioma_opciones.setAdapter(adapter2);
         SegundoIdioma_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -433,7 +433,7 @@ public class CrearBusqueda extends AppCompatActivity {
         TercerIdioma_opciones = findViewById(R.id.Spinner_TercerIdioma);
 
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.TercerIdioma_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.TercerIdioma_opciones, android.R.layout.simple_spinner_dropdown_item);
         TercerIdioma_opciones.setAdapter(adapter3);
         TercerIdioma_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -475,7 +475,7 @@ public class CrearBusqueda extends AppCompatActivity {
         NivelEstudios_opciones = findViewById(R.id.Spinner_estudios);
 
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource
-                (CrearBusqueda.this, R.array.NivelEstudios_opciones, android.R.layout.simple_spinner_item);
+                (CrearBusqueda.this, R.array.NivelEstudios_opciones, android.R.layout.simple_spinner_dropdown_item);
         NivelEstudios_opciones.setAdapter(adapter4);
         NivelEstudios_opciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
