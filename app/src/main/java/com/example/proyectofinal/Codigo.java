@@ -3,6 +3,7 @@ package com.example.proyectofinal;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -24,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Random;
@@ -63,7 +65,11 @@ public class Codigo extends AppCompatActivity {
         SegundoIdioma = getIntent().getExtras().getString("segundo");
         Tercer_idioma = getIntent().getExtras().getString("tercer");
         Discapacidades = getIntent().getExtras().getString("discapacidad");
-        bitmap = getIntent().getParcelableExtra("bitmap");
+        try {
+            bitmap = BitmapFactory.decodeStream(this.openFileInput("myImage"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Random r = new Random();
         final int numero = r.nextInt(1111 - 1) + 7777;

@@ -1,6 +1,7 @@
 package com.example.proyectofinal;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -33,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
@@ -455,7 +457,8 @@ public class Registro extends AppCompatActivity
                                             intent.putExtra("segundo", SegundoIdioma);
                                             intent.putExtra("tercer", Tercer_idioma);
                                             intent.putExtra("discapacidad", Discapacidades);
-                                            intent.putExtra("bitmap", bitmap);
+                                            //intent.putExtra("bitmap", bitmap);
+                                            createImageFromBitmap(bitmap);
 
                                             startActivity(intent);
                                             break;
@@ -533,6 +536,14 @@ public class Registro extends AppCompatActivity
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
+
+    public String createImageFromBitmap(Bitmap bitmap) {
+        String fileName = "myImage";
+    try { ByteArrayOutputStream bytes = new ByteArrayOutputStream(); bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        FileOutputStream fo = openFileOutput(fileName, Context.MODE_PRIVATE);
+        fo.write(bytes.toByteArray());
+        fo.close();
+    } catch (Exception e) { e.printStackTrace(); fileName = null; } return fileName; }
 
 
 }

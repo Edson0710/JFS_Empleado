@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         , new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Error conexión", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
         RequestQueue x = Volley.newRequestQueue(MainActivity.this);

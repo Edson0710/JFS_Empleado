@@ -164,7 +164,7 @@ public class Busqueda extends AppCompatActivity {
 
                 if (lista == null || lista.size() == 0) {
                     AlertDialog.Builder myBuild = new AlertDialog.Builder(Busqueda.this);
-                    myBuild.setMessage("No hay resultados que coincidan más del 50%\nSugerencias de búsqueda:\n- Intenta usar palabras más generales\n- Comprueba que no haya faltas de ortografía\n- Usa palabras completas y no abreviaturas");
+                    myBuild.setMessage("No hay resultados que coincidan más del 50% de los parametros seleccionados en las ofertas existentes\nSugerencias de búsqueda:\n- Intenta usar palabras más generales\n- Comprueba que no haya faltas de ortografía\n- Usa palabras completas y no abreviaturas");
                     myBuild.setTitle("JFS");
                     myBuild.setCancelable(false);
                     myBuild.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
